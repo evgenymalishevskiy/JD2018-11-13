@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT users (user)+>
+<!ELEMENT user (name, nickname, email, ads)>
+<!ELEMENT ads (ad)+>
+<!ELEMENT ad (animal, weight, color, price)>
+<!ATTLIST user
+        login ID #REQUIRED
+        type CDATA #REQUIRED
+        >
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT nickname (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT animal (#PCDATA)>
+<!ELEMENT weight (#PCDATA)>
+<!ELEMENT color (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+
+

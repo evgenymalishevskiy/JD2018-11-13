@@ -1,4 +1,4 @@
-package by.it.kruglenja.jd01_09;
+/*package by.it.kruglenja.jd01_09;
 
 import java.util.Scanner;
 
@@ -21,4 +21,4 @@ public class ConsoleRunner {
             }
         }Var.save();
     }
-}
+}*/

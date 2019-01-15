@@ -1,6 +1,6 @@
 package by.it.malishevskiy.jd01_09;
 
-import by.it._examples_.jd01_07.matrixOk.MatrixException;
+/*import by.it._examples_.jd01_07.matrixOk.MatrixException;
 
 public class Runner {
     static void print (Var var) {System.out.println(var);}
@@ -23,6 +23,6 @@ public class Runner {
             print(m.add(m));
             print(m.sub(m));
             print(m.mul(m));
-            print(m.div(m)); */
+            print(m.div(m));
         }
-    }
+    }*/

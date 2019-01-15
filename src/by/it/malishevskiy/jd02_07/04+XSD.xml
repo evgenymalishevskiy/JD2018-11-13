@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://malishevskiy.it-academy.by/xml/users"
+          xsi:schemaLocation="http://malishevskiy.it-academy.by/xml/users 04.xsd">
+    <user login="Ivanov227">
+        <name>Ivanov Alexander</name>
+        <niсkname>&quot;A&apos;Ivan&quot;</niсkname>
+        <email>ivanov.alexander@mail.ru</email>
+        <ads>
+            <ad>
+                <animal>Dog</animal>
+                <weight>10kg</weight>
+                <color>black</color>
+                <price>$100</price>
+            </ad>
+            <ad>
+                <animal>Cat</animal>
+                <weight>6kg</weight>
+                <color>white</color>
+                <price>$65</price>
+            </ad>
+        </ads>
+    </user>
+
+    <user login="ZaharH">
+        <name>Zahar Baturenko</name>
+        <niсkname>&lt;Zaharevich&gt;</niсkname>
+        <email>zahar.baturenko@mail.ru</email>
+        <ads>
+            <ad>
+                <animal>parrot</animal>
+                <weight>7kg</weight>
+                <color>red-white-blue</color>
+                <price>$175</price>
+            </ad>
+        </ads>
+    </user>
+</users>
