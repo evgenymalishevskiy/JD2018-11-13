@@ -7,7 +7,7 @@
         <!ELEMENT ad (animal, weight, color, price)>
         <!ATTLIST user
         login ID #REQUIRED
-        type CDATA #REQUIRED
+        type CDATA #REQUIRED>
         <!ELEMENT name (#PCDATA)>
         <!ELEMENT nickname (#PCDATA)>
         <!ELEMENT email (#PCDATA)>
@@ -15,6 +15,7 @@
         <!ELEMENT weight (#PCDATA)>
         <!ELEMENT color (#PCDATA)>
         <!ELEMENT price (#PCDATA)>
+        ]>
 <users>
     <user login="Ivanov227" type='seller'>
         <name>Ivanov Alexander</name>
