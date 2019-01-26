@@ -1,0 +1,14 @@
+package by.it.malishevskiy.jd03_02.crud;
+
+<<<<<<< HEAD:src/by/it/malishevskiy/jd03_02/crud/CRUD/Con.java
+interface Con {
+    String URL_DB = "jdbc:mysql://127.0.0.1:3306/malishecskiy"+
+                                        "?useUnicode=true&characterEncoding=UTF-8";
+=======
+interface CN {
+    String URL_DB = "jdbc:mysql://127.0.0.1:3306/malishevskiy" +
+            "?useUnicode=true&characterEncoding=UTF-8";
+>>>>>>> e988889795379bddbc30fabdaeb755802bfef818:src/by/it/malishevskiy/jd03_02/crud/CRUD/CN.java
+    String USER_DB = "root";
+    String PASSWORD_DB = "";
+}

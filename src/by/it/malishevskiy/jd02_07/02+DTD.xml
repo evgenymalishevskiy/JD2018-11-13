@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE users SYSTEM "02.dtd" >
+<users>
+    <user login="Ivanov227" type='_user_'>
+        <name>Ivanov Alexander</name>
+        <nickname>&quot;A&apos;Ivan&quot;</nickname>
+        <email>ivanov.alexander@mail.ru</email>
+        <ads>
+            <ad>
+                <animal>Dog</animal>
+                <weight>10</weight>
+                <color>Black</color>
+                <price>100</price>
+            </ad>
+            <ad>
+                <animal>Cat</animal>
+                <weight>6</weight>
+                <color>White</color>
+                <price>65</price>
+            </ad>
+        </ads>
+    </user>
+
+    <user login="ZaharH" type='seller'>
+        <name>Zahar Baturenko</name>
+        <nickname>&lt;Zaharevich&gt;</nickname>
+        <email>zahar.baturenko@mail.ru</email>
+        <ads>
+            <ad>
+                <animal>Parrot</animal>
+                <weight>7</weight>
+                <color>Red-White-Blue</color>
+                <price>175</price>
+            </ad>
+        </ads>
+    </user>
+</users>
