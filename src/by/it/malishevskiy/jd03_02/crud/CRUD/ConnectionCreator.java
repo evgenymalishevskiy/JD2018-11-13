@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 
 
-class Connect {
+public class ConnectionCreator {
 
     static {
         Driver driver;

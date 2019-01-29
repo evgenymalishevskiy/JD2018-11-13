@@ -11,7 +11,7 @@ public class RoleCRUD {
     boolean create(Role role) throws SQLException {
         String sql = String.format("INSERT INTO `roles`(`role`)" +
                 "VALUES ('%s')", role.getRole());
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             if (1 == statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -27,7 +27,7 @@ public class RoleCRUD {
     Role read(long id) throws SQLException {
         String sql = String.format("SELECT `ID`, `role`" +
                 "FROM `roles` WHERE ID=%d", id);
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
@@ -45,7 +45,7 @@ public class RoleCRUD {
                         "`role` = '%s'," +
                         "WHERE `role`.`id` = %d",
                 role.getRole(), role.getId());
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             return (1 == statement.executeUpdate(sql));
         }
@@ -55,7 +55,7 @@ public class RoleCRUD {
         String sql = String.format(
                 "DELETE FROM `roles` WHERE `roles`.`id` = %d",
                 role.getId());
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             return (1 == statement.executeUpdate(sql));
         }

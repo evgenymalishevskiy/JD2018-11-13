@@ -7,14 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-class UserCRUD {
+public class UserCRUD {
 
     boolean create(User user) throws SQLException {
         String sql = String.format(
                 "INSERT INTO `users` (`login`, `password`, `email`, `roles_ID`)" +
                         "VALUES ('%s', '%s', '%s', '%d')",
                 user.getNickname(), user.getPassword(), user.getEmail(), user.getRoles_Id());
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             if (1 == statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -30,7 +30,7 @@ class UserCRUD {
     User read(long id) throws SQLException {
         String sql = String.format("SELECT `id`, `login`, `password`, `email`, `roles_ID` " +
                 "FROM `users` WHERE id=%d", id);
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
@@ -53,7 +53,7 @@ class UserCRUD {
                 user.getNickname(), user.getPassword(),
                 user.getEmail(), user.getRoles_Id(),
                 user.getId());
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             return (1 == statement.executeUpdate(sql));
         }
@@ -63,7 +63,7 @@ class UserCRUD {
         String sql = String.format(
                 "DELETE FROM `users` WHERE `users`.`id` = %d",
                 user.getId());
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             return (1 == statement.executeUpdate(sql));
         }

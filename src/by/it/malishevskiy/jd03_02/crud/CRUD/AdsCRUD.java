@@ -15,7 +15,7 @@ public class AdsCRUD {
                 "INSERT INTO `ads` (`animal`, `weight`,`color`, 'price', `description`, 'users_ID') " +
                         "VALUES ('%s', '%s', '%s', '%s', '%s', '%d')",
                 buyer.getItem(), buyer.getSpecif(), buyer.getPrice(), buyer.getAddress(), buyer.getUsers_Id());
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             if (1 == statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -31,7 +31,7 @@ public class AdsCRUD {
     Ads read(long id) throws SQLException {
         String sql = String.format("SELECT `ID`, `animal`, `weight`,`color`, 'price', `description`, 'users_ID' " +
                 "FROM `ads` WHERE id=%d", id);
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
@@ -58,7 +58,7 @@ public class AdsCRUD {
                         "WHERE `buyers`.`id` = %d",
                 buyer.getItem(), buyer.getSpecif(), buyer.getPrice(),
                 buyer.getAddress(), buyer.getId());
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             return (1 == statement.executeUpdate(sql));
         }
@@ -68,7 +68,7 @@ public class AdsCRUD {
         String sql = String.format(
                 "DELETE FROM `buyers` WHERE `users`.`id` = %d",
                 buyer.getId());
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             return (1 == statement.executeUpdate(sql));
         }
