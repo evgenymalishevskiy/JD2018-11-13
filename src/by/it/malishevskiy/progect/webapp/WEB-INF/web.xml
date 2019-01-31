@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
@@ -11,14 +12,12 @@
     и имя сервлета в них было одинаковым!!! Здесь это имя HelloWorld
     -->
     <servlet>
-        <servlet-name>HelloWorld</servlet-name>
-        <servlet-class>by.it.malishevskiy.jd03_04.java.HelloWorld</servlet-class>
+        <servlet-name>FrontController</servlet-name>
+        <servlet-class>by.it.malishevskiy.progect.java.controler.FrontController</servlet-class>
     </servlet>
+
     <servlet-mapping>
-        <servlet-name>HelloWorld</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <servlet-name>FrontController</servlet-name>
+        <url-pattern>/do</url-pattern>
     </servlet-mapping>
-
-
-
 </web-app>
