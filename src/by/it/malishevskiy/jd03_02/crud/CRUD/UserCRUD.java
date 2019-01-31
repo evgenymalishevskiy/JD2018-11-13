@@ -1,6 +1,6 @@
 package by.it.malishevskiy.jd03_02.crud.CRUD;
 
-import by.it.berdnik.jd03_02.beans.User;
+import by.it.malishevskiy.jd03_02.crud.beans.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,13 +13,13 @@ public class UserCRUD {
         String sql = String.format(
                 "INSERT INTO `users` (`login`, `password`, `email`, `roles_ID`)" +
                         "VALUES ('%s', '%s', '%s', '%d')",
-                user.getNickname(), user.getPassword(), user.getEmail(), user.getRoles_Id());
+                user.getLogin(), user.getPassword(), user.getEmail(), user.getRoles_ID());
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             if (1 == statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    user.setId(generatedKeys.getLong(1));
+                    user.setId((int) generatedKeys.getLong(1));
                 }
                 return true;
             }
@@ -50,8 +50,8 @@ public class UserCRUD {
                         "`login` = '%s', `password` = '%s', " +
                         "`email` = '%s',  `roles_ID` = '%d' " +
                         "WHERE `users`.`id` = %d",
-                user.getNickname(), user.getPassword(),
-                user.getEmail(), user.getRoles_Id(),
+                user.getLogin(), user.getPassword(),
+                user.getEmail(), user.getRoles_ID(),
                 user.getId());
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {

@@ -26,7 +26,7 @@ public class Roles {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Roles roles = (Roles) o;
+        by.it.malishevskiy.jd03_02.crud.beans.Roles roles = (by.it.malishevskiy.jd03_02.crud.beans.Roles) o;
         return id == roles.id && Objects.equals(role, roles.role);
     }
 

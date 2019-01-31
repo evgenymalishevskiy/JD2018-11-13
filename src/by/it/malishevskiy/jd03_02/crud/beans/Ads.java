@@ -5,12 +5,17 @@ import java.util.Objects;
 public class Ads {
     private int ID;
     private String animal;
-    private String weight;
+    private double weight;
     private String color;
     private int Price;
     private String price;
     private String description;
-    private int user_ID;
+    private String adress;
+    private int users_ID;
+
+
+    public Ads() {
+    }
 
     public int getID() {
         return ID;
@@ -28,11 +33,11 @@ public class Ads {
         this.animal = animal;
     }
 
-    public String getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -60,12 +65,20 @@ public class Ads {
         this.description = description;
     }
 
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
     public int getUser_ID() {
-        return user_ID;
+        return users_ID;
     }
 
     public void setUser_ID(int user_ID) {
-        this.user_ID = user_ID;
+        this.users_ID = user_ID;
     }
 
     public void setPrice(int price) {
@@ -76,16 +89,16 @@ public class Ads {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Ads ads = (Ads) o;
-        return ID == ads.ID && Price == ads.Price && user_ID == ads.user_ID && Objects.equals(animal, ads.animal) && Objects.equals(weight, ads.weight) && Objects.equals(color, ads.color) && Objects.equals(price, ads.price) && Objects.equals(description, ads.description);
+        by.it.malishevskiy.jd03_02.crud.beans.Ads ads = (by.it.malishevskiy.jd03_02.crud.beans.Ads) o;
+        return ID == ads.ID && Price == ads.Price && users_ID == ads.users_ID && Objects.equals(animal, ads.animal) && Objects.equals(weight, ads.weight) && Objects.equals(color, ads.color) && Objects.equals(price, ads.price) && Objects.equals(description, ads.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID, animal, weight, color, Price, price, description, user_ID);
+        return Objects.hash(ID, animal, weight, color, Price, price, description, users_ID);
     }
 
-    public Ads(int ID, String animal, String weight, String color, int price, String price1, String description, int user_ID) {
+    public Ads(int ID, String animal, double weight, String color, int price, String price1, int user_ID) {
         this.ID = ID;
         this.animal = animal;
         this.weight = weight;
@@ -93,10 +106,11 @@ public class Ads {
         Price = price;
         this.price = price1;
         this.description = description;
-        this.user_ID = user_ID;
+        this.adress = adress;
+        this.users_ID = user_ID;
     }
 
-    public Ads(String ID, String animal, double weight, String s, String color, String description, long user_ID) {
+    public Ads(String ID, String animal, double weight, String s, String color, String description, String adress, long user_ID) {
     }
 
     @Override
@@ -107,6 +121,7 @@ public class Ads {
                 ", color='" + color + '\'' +
                 ", Price=" + Price + ", price='" + price + '\'' +
                 ", description='" + description + '\'' +
-                ", user_ID=" + user_ID + '}';
+                ", adress" + adress + '\'' +
+                ", user_ID=" + users_ID + '}';
     }
 }

@@ -1,26 +1,27 @@
 package by.it.malishevskiy.jd03_02.crud.CRUD;
 
-import by.it.berdnik.jd03_02.beans.Buyer;
 import by.it.malishevskiy.jd03_02.crud.beans.Ads;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
+
 
 public class AdsCRUD {
 
-    boolean create(Buyer buyer) throws SQLException {
+    boolean create(Ads ads) throws SQLException {
         String sql = String.format(
                 "INSERT INTO `ads` (`animal`, `weight`,`color`, 'price', `description`, 'users_ID') " +
                         "VALUES ('%s', '%s', '%s', '%s', '%s', '%d')",
-                buyer.getItem(), buyer.getSpecif(), buyer.getPrice(), buyer.getAddress(), buyer.getUsers_Id());
+        ads.getAnimal(),ads.getWeight(),ads.getColor(),ads.getPrice(),ads.getDescription(),ads.getUser_ID());
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             if (1 == statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    buyer.setId(generatedKeys.getLong(1));
+                    ads.setID((int) generatedKeys.getLong(1));
                 }
                 return true;
             }
@@ -35,13 +36,13 @@ public class AdsCRUD {
              Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
-                String ID = resultSet.getString("ID");
+                int ID = resultSet.getInt("ID");
                 String animal = resultSet.getString("animal");
                 double weight = resultSet.getLong("weight");
                 String color = resultSet.getString("color");
-                String price = resultSet.getString("price");
+                int price = resultSet.getInt("price");
                 String description = resultSet.getString("description");
-                long users_ID = resultSet.getLong("users_ID");
+                int users_ID = resultSet.getInt("users_ID");
 
                 return new Ads(ID, animal, weight, color, price, description, users_ID);
             } else
@@ -49,25 +50,26 @@ public class AdsCRUD {
         }
     }
 
-    boolean update(Buyer buyer) throws SQLException {
-        String sql = String.format(
-                "UPDATE `ads` SET " +
-                        "`animal` = '%s', " +
-                        "`weight` = '%s', `color` = '%s', `price` = '%s', " +
-                        "`description` = '%s', `users_ID` = '%d' " +
-                        "WHERE `buyers`.`id` = %d",
-                buyer.getItem(), buyer.getSpecif(), buyer.getPrice(),
-                buyer.getAddress(), buyer.getId());
-        try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement()) {
-            return (1 == statement.executeUpdate(sql));
-        }
+    public boolean update(Ads ads) throws SQLException {
+        //локаль нужна,т.к. есть дробные числа. Их нужно указывать через точку
+        String sql = String.format(Locale.ENGLISH,
+                "UPDATE `ads` SET " + "`Animal`=%d " +
+                        ",`Weight`='%.3f'" + ",`Color`='%.3f'" +
+                        ",`Price`=%d" + ",`Description`=%d" +
+                        ",`Adress`='%s'" + ",`Users_ID`=%d " +
+                        " WHERE `ad`.`ID` = %d",
+                ads.getAnimal(), ads.getWeight(),
+                ads.getColor(), ads.getPrice(),
+                ads.getDescription(), ads.getAdress(),
+                ads.getUser_ID(), ads.getID()
+        );
+        return false;
     }
 
-    boolean delete(Buyer buyer) throws SQLException {
+    boolean delete(Ads ads) throws SQLException {
         String sql = String.format(
                 "DELETE FROM `buyers` WHERE `users`.`id` = %d",
-                buyer.getId());
+                ads.getID());
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             return (1 == statement.executeUpdate(sql));

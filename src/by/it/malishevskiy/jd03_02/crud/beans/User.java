@@ -53,7 +53,7 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
+        by.it.malishevskiy.jd03_02.crud.beans.User user = (by.it.malishevskiy.jd03_02.crud.beans.User) o;
         return id == user.id && roles_ID == user.roles_ID && Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(email, user.email);
     }
 
@@ -70,7 +70,7 @@ public class User {
         this.roles_ID = roles_ID;
     }
 
-    public User() {
+    public User(long id, String nickname, String password, String email, long roles_ID) {
     }
 
     @Override
